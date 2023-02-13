@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="custom_report_external_layout">
+        <div>
+            <!--            <div class="header">-->
+            <div class="header">
+                <div>
+                    <img class="img" src="/report_layout/static/src/img/gl_marine.jpg"
+                         style="width: 100%; max-height: 150px;"/>
+                </div>
+            </div>
+            <!--            </div>-->
+            <!--<div t-if="company.logo or company.report_header" class="row zero_min_height">-->
+            <!--<div class="col-12">-->
+            <!--<div style="border-bottom: 1px solid black;"/>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="row">-->
+            <!--<div class="col-6" name="company_address">-->
+            <!--<span t-if="company.company_details" t-field="company.company_details"></span>-->
+            <!--<span t-else="" t-field="company.partner_id"-->
+            <!--t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>-->
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="footer" style="font-size:15px;solid blue;">
+            TIN No.: 1026384495
+        </div>
+        <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout {{  'o_report_layout_background' if company.layout_background in ['Geometric', 'Custom']  else  '' }}"
+             t-attf-style="background-image: url({{ 'data:image/png;base64,%s' % company.layout_background_image.decode('utf-8') if company.layout_background_image and company.layout_background == 'Custom' else '/base/static/img/bg_background_template.jpg' if company.layout_background == 'Geometric' else ''}});"
+             t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+             t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <div class="pt-5">
+                <t t-call="web.address_layout"/>
+            </div>
+            <t t-out="0"/>
+        </div>
+        <!--        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">-->
+        <!--            <div class="text-center" style="border-top: 1px solid black;">-->
+        <!--                <ul class="list-inline mb4">-->
+        <!--                    <div t-field="company.report_footer"/>-->
+        <!--                </ul>-->
+        <!--                <div t-if="report_type == 'pdf'" class="text-muted">-->
+        <!--                    <span class="page">-->
+        <!--                        <div class="text-right">TIN No.: 1026384495</div>-->
+        <!--                    </span>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+    </template>
+</odoo>

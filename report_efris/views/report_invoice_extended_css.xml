@@ -1,0 +1,7 @@
+<odoo>
+    <template id="assets_common_css_file" inherit_id="web.report_assets_common">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/report_efris/static/src/css/report_invoice_extended.css"/>
+        </xpath>
+    </template>
+</odoo>
